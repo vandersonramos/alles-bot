@@ -13,7 +13,7 @@ You can find the BotMan and BotMan Studio documentation at [http://botman.io](ht
 -  `git clone git@github.com:vandersonramos/alles-bot.git`
 - `cd alles-bot/`
 -  `composer install`
-- `cp .env.example .env`
+- `cp .env.example .env`then change the database section with the data from your local database
 - `php artisan migrate`
 - `php artisan db:seed --class=CurrencyTableSeeder`
 
