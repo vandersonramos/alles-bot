@@ -16,6 +16,7 @@ You can find the BotMan and BotMan Studio documentation at [http://botman.io](ht
 - `cp .env.example .env`then change the database section with the data from your local database
 - `php artisan migrate`
 - `php artisan db:seed --class=CurrencyTableSeeder`
+- `php artisan key:generate`
 
 ## API KEY
 

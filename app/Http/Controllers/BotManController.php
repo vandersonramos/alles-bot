@@ -52,12 +52,18 @@ class BotManController extends Controller
      */
     public function logout(BotMan $bot)
     {
-        Auth::logout();
-        $bot->userStorage()->delete('user');
-        $bot->userStorage()->delete('email');
-        $bot->userStorage()->delete('password');
-        $bot->userStorage()->delete('name');
-        $bot->reply("You are logged out.");
+        if ($bot->userStorage()->find('user')->get('user')) {
+            Auth::logout();
+            $bot->userStorage()->delete('user');
+            $bot->userStorage()->delete('email');
+            $bot->userStorage()->delete('password');
+            $bot->userStorage()->delete('name');
+            $bot->reply("You are logged out.");
+        } else {
+            $bot->reply("You are not logged in.");
+        }
+
+
     }
 
     /**

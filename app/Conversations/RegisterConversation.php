@@ -61,13 +61,14 @@ class RegisterConversation extends Conversation
      */
     public function registerUser()
     {
-        User::create([
+        $user = User::create([
             'name' => $this->bot->userStorage()->find('name')->get('name'),
             'email' => $this->bot->userStorage()->find('email')->get('email'),
             'password' => bcrypt($this->bot->userStorage()->find('password')->get('password')),
         ]);
 
-        Auth::login(Auth::user(), true);
+        Auth::login($user, true);
+        $this->bot->userStorage()->save(['user' => Auth::user()->getAuthIdentifier()], 'user');
 
         if (Auth::check()) {
             $this->say('Great!! Your Account has been created. You are Logged in');

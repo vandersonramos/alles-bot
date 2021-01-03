@@ -56,7 +56,7 @@ class LoginConversation extends Conversation
             Auth::login(Auth::user(), true);
         }
         else {
-            $this->say('There is something wrong, please, try again');
+            $this->say('There is something wrong, Do you have an account?');
         }
 
         if (Auth::check()) {
